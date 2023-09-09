@@ -25,20 +25,46 @@ public class testeEx4
 //    Mutante3 classeTeste = new Mutante3(); //- morto
     
     @Test
-    public void testeDefinirFaixaEtaria()
+    public void testarIdadeNegativa()
     {
         pessoa = new Pessoa("Alex", -1);
         assertThrows(IllegalArgumentException.class, () -> classeTeste.definirFaixaEtaria(pessoa));
+    }
+    
+    @Test
+    public void testarIdadeMaiorIgual110()
+    {
         pessoa = new Pessoa("Alex", 110);
         assertThrows(IllegalArgumentException.class, () -> classeTeste.definirFaixaEtaria(pessoa));
+    }
+    
+    @Test
+    public void testarCrianca()
+    {
         pessoa = new Pessoa("Alex", 11);
         assertEquals("Alex eh crianca", classeTeste.definirFaixaEtaria(pessoa));
+    }
+    
+    @Test
+    public void testarAdolescente()
+    {
         pessoa = new Pessoa("Alex", 18);
         assertEquals("Alex eh adolescente", classeTeste.definirFaixaEtaria(pessoa));
+    }
+    
+    @Test
+    public void testarAdulto()
+    {
         pessoa = new Pessoa("Alex", 58);
         assertEquals("Alex eh adulto", classeTeste.definirFaixaEtaria(pessoa));
+    }
+    
+    @Test
+    public void testarIdoso()
+    {
         pessoa = new Pessoa("Alex", 60);
         assertEquals("Alex eh idoso", classeTeste.definirFaixaEtaria(pessoa));
     }
+        
 
 }
