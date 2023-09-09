@@ -17,10 +17,10 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author Rever
  */
-public class HumidificarTeste
+public class UmidificarTeste
 {
 
-    public HumidificarTeste()
+    public UmidificarTeste()
     {
     }
 
@@ -48,21 +48,20 @@ public class HumidificarTeste
     public void UmidificarTeste()
     {
         Exercicio5 climatizador = new Exercicio5();
-        Assertions.assertFalse(climatizador.umidificando());
-
         climatizador.ligar();
-        Assertions.assertTrue(climatizador.umidificando());
         climatizador.umidificar();
-        Assertions.assertFalse(climatizador.umidificando());
+        assertEquals(1, climatizador.velocidade());
+        assertFalse(climatizador.umidificando());
+        assertFalse(climatizador.diminuirV());
         climatizador.umidificar();
-        Assertions.assertTrue(climatizador.umidificando());
+        assertEquals(1, climatizador.velocidade());
+        assertTrue(climatizador.umidificando());
+        RuntimeException assertThrows = assertThrows(RuntimeException.class, () -> climatizador.desligar());
         climatizador.aumentarV();
-        Assertions.assertTrue(climatizador.umidificando());
-        climatizador.diminuirV();
-        Assertions.assertTrue(climatizador.umidificando());
         climatizador.umidificar();
-        Assertions.assertFalse(climatizador.umidificando());
-        
+        assertFalse(climatizador.aumentarV());
+        assertEquals(2, climatizador.velocidade());
+        assertFalse(climatizador.umidificando());
     }
 
 

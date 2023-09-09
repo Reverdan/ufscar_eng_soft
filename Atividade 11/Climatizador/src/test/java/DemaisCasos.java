@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
 
-import cofre.Exercicio6;
+import com.mycompany.climatizador.Exercicio5;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,10 +15,10 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author Rever
  */
-public class CofreTeste
+public class DemaisCasos
 {
     
-    public CofreTeste()
+    public DemaisCasos()
     {
     }
     
@@ -42,10 +42,16 @@ public class CofreTeste
     {
     }
 
-   @Test
-   public void TestarTravado2Tentativa()
-   {
-       Exercicio6 cofre = new Exercicio6();
-       assertEquals("fechada", cofre.statusPorta());
-   }
+    @Test
+    public void DemaisCasos()
+    {
+        Exercicio5 climatizador = new Exercicio5();
+        RuntimeException assertThrows = assertThrows(RuntimeException.class, () -> climatizador.desligar());
+        assertEquals(0, climatizador.velocidade());
+        climatizador.ligar();
+        climatizador.aumentarV();
+        assertFalse(climatizador.aumentarV());
+        assertEquals(2, climatizador.velocidade());
+        assertTrue(climatizador.umidificando());
+    }
 }

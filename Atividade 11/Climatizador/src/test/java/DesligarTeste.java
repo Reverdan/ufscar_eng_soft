@@ -46,18 +46,13 @@ public class DesligarTeste
     public void testDesligar()
     {
         Exercicio5 climatizador = new Exercicio5();
-        assertThrows(RuntimeException.class, () -> climatizador.desligar());
         climatizador.ligar();
-        
         climatizador.desligar();
-        assertFalse(climatizador.umidificando());
-        assertEquals(0, climatizador.velocidade());
-        
+        RuntimeException assertThrows = assertThrows(RuntimeException.class, () -> climatizador.desligar());
         climatizador.ligar();
         climatizador.aumentarV();
         climatizador.umidificar();
         climatizador.desligar();
-        assertFalse(climatizador.umidificando());
         assertEquals(0, climatizador.velocidade());
     }
 }
